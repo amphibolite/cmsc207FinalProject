@@ -23,5 +23,11 @@ echo "HOMEPAGE"
     <button>Register Claim</button>
 </a>
 
+<br><br>
+<a href="register_expired.php">
+    <button>Register Expired Food</button>
+</a>
+
+
 </body>
 </html>
