@@ -28,6 +28,11 @@ echo "HOMEPAGE"
     <button>Register Expired Food</button>
 </a>
 
+<br><br>
+<a href="available_food.php">
+    <button>Show available food in my barangay</button>
+</a>
+
 
 </body>
 </html>
