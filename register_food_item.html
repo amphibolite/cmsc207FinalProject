@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register Food Item</title>
+</head>
+<body>
+    <h2>Register a New Food Item</h2>
+    <form method="POST" action="register_food_item.php">
+        <label for="food_item">Food Item:</label><br>
+        <input type="text" name="food_item" required><br><br>
+
+        <label for="food_group">Food Group:</label><br>
+        <input type="text" name="food_group"><br><br>
+
+        <label for="perishable">Perishable?</label><br>
+        <select name="perishable" required>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select><br><br>
+
+        <label for="unit">Unit (e.g. kg, pcs):</label><br>
+        <input type="text" name="unit"><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

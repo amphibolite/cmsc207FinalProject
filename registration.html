@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register - CMSC207</title>
+</head>
+<body>
+    <h2>Register</h2>
+    <form method="POST" action="register.php">
+        <label>First Name:</label><br>
+        <input type="text" name="first_name" required><br><br>
+
+        <label>Middle Name:</label><br>
+        <input type="text" name="middle_name"><br><br>
+
+        <label>Last Name:</label><br>
+        <input type="text" name="last_name" required><br><br>
+
+        <label>Gender:</label><br>
+        <select name="gender" required>
+            <option value="">Select</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select><br><br>
+
+        <label>Birthdate:</label><br>
+        <input type="date" name="birthdate" required><br><br>
+
+        <label>Province:</label><br>
+        <input type="text" name="province"><br><br>
+
+        <label>City:</label><br>
+        <input type="text" name="city"><br><br>
+
+        <label>Barangay:</label><br>
+        <input type="text" name="barangay"><br><br>
+
+        <label>Street Address:</label><br>
+        <input type="text" name="street_address"><br><br>
+
+        <label>Username:</label><br>
+        <input type="text" name="username" required><br><br>
+
+        <label>Password:</label><br>
+        <input type="password" name="password" required><br><br>
+
+        <input type="submit" value="Register">
+    </form>
+</body>
+</html>
