@@ -33,6 +33,15 @@ echo "HOMEPAGE"
     <button>Show available food in my barangay</button>
 </a>
 
+<br><br>
+<a href="available_food_city.php">
+    <button>Show available food in my city</button>
+</a>
+
+<br><br>
+<a href="available_food_province.php">
+    <button>Show available food in my province</button>
+</a>
 
 </body>
 </html>
