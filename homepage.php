@@ -18,6 +18,10 @@ echo "HOMEPAGE"
     <button>Register Donation</button>
 </a>
 
+<br><br>
+<a href="register_claim.php">
+    <button>Register Claim</button>
+</a>
 
 </body>
 </html>
