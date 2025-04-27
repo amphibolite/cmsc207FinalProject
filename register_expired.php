@@ -17,6 +17,7 @@ $foodItems = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <html>
 <head>
     <title>Register Expired Food</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
     <h2>Register Expired Food Item</h2>

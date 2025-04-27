@@ -21,6 +21,7 @@ $users = $userStmt->fetchAll(PDO::FETCH_ASSOC);
 <html>
 <head>
     <title>Register Donation</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
     <h2>Add a Donation</h2>

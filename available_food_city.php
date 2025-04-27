@@ -50,6 +50,7 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <html>
 <head>
     <title>Available Food in My City</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
     <h2>Available Food in <?= htmlspecialchars($city) ?></h2>

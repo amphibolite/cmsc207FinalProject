@@ -1,8 +1,23 @@
 <html>
 <head>
     <title>Register - CMSC207</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+
 </head>
 <body>
+
+<nav>
+<ul>
+<li><a href="placeholder.html">Home</a></li>    
+<li><a href="about-me.html">About Us</a></li>
+<li><a href="placeholder.html">Major Sponsors</a></li>
+<li><a href="placeholder.html">Be A Sponsor</a></li>
+<li><a href="placeholder.html">Contacts Us</a></li>
+</ul>
+</nav>
+
+<img src="assets/images/vegetable.webp" alt="The Amazing JKV Logo" width="100%">
+
 
 <?php
 echo "HOMEPAGE"

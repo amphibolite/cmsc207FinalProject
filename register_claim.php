@@ -21,6 +21,7 @@ $users = $userStmt->fetchAll(PDO::FETCH_ASSOC);
 <html>
 <head>
     <title>Register Claim</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
     <h2>Register a Food Claim</h2>
