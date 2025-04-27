@@ -13,6 +13,7 @@
 <li><a href="placeholder.html">Major Sponsors</a></li>
 <li><a href="placeholder.html">Be A Sponsor</a></li>
 <li><a href="placeholder.html">Contacts Us</a></li>
+<li><a href="logout.php">Logout</a></li>
 </ul>
 </nav>
 
