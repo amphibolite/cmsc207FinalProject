@@ -18,42 +18,52 @@ $users = $userStmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Register Donation</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/claim.css">
 </head>
 <body>
-    <h2>Add a Donation</h2>
-    <form method="POST">
-        <!-- Select donor -->
-        <label for="donor">Select Donor:</label><br>
-        <select name="donor" required>
-            <?php foreach ($users as $user): ?>
-                <option value="<?= $user['user_id'] ?>">
-                    <?= htmlspecialchars($user['username']) ?>
-                </option>
-            <?php endforeach; ?>
-        </select><br><br>
+    <div class="container">
+        <div class="card">
+            <h2 class="card-title">Add a Donation</h2>
+            <form method="POST" class="form">
 
-        <!-- Select food item -->
-        <label for="food_item">Food Item:</label><br>
-        <select name="food_item" required>
-            <?php foreach ($foodItems as $item): ?>
-                <option value="<?= htmlspecialchars($item['food_item']) ?>">
-                    <?= htmlspecialchars($item['food_item']) ?>
-                </option>
-            <?php endforeach; ?>
-        </select><br><br>
+                <div class="form-group">
+                    <label for="donor">Select Donor:</label>
+                    <select name="donor" id="donor" required>
+                        <?php foreach ($users as $user): ?>
+                            <option value="<?= $user['user_id'] ?>">
+                                <?= htmlspecialchars($user['username']) ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
 
-        <!-- Enter quantity -->
-        <label for="quantity">Quantity:</label><br>
-        <input type="number" name="quantity" step="0.01" required><br><br>
+                <div class="form-group">
+                    <label for="food_item">Food Item:</label>
+                    <select name="food_item" id="food_item" required>
+                        <?php foreach ($foodItems as $item): ?>
+                            <option value="<?= htmlspecialchars($item['food_item']) ?>">
+                                <?= htmlspecialchars($item['food_item']) ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
 
-        <input type="submit" value="Submit">
-    </form>
+                <div class="form-group">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" name="quantity" id="quantity" step="0.01" min="1" required>
+                </div>
+
+                <button type="submit" class="btn">Submit Donation</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
+
 
 <?php
 // Handle form submission
