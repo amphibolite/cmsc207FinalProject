@@ -30,12 +30,42 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <title>Available Food</title>
     <link rel="stylesheet" href="assets/css/view_food.css">
+    <style>
+        .search-box {
+            margin-bottom: 15px;
+        }
+
+        .search-box input {
+            padding: 8px;
+            width: 300px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+    </style>
+    <script>
+        function filterTable() {
+            const input = document.getElementById("locationSearch");
+            const filter = input.value.toLowerCase();
+            const rows = document.querySelectorAll("#foodTable tbody tr");
+
+            rows.forEach(row => {
+                const location = row.cells[3].textContent.toLowerCase();
+                row.style.display = location.includes(filter) ? "" : "none";
+            });
+        }
+    </script>
 </head>
 <body>
     <div class="container">
         <h2>Available Donated Food</h2>
+
+        <div class="search-box">
+            <label for="locationSearch">Search by Location:</label><br>
+            <input type="text" id="locationSearch" onkeyup="filterTable()" placeholder="Enter barangay, city, or province...">
+        </div>
+
         <?php if (count($results) > 0): ?>
-            <table>
+            <table id="foodTable">
                 <thead>
                     <tr>
                         <th>Food Item</th>

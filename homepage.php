@@ -30,7 +30,7 @@ if (!isset($_SESSION['username'])) {
                     <li><a href="register_donation.php">Donate</a></li>
                     <li><a href="register_claim.php">Claim</a></li>
                     <li><a href="messages.php">Messages</a></li>
-                    <li><a href="profile.php"><?php echo htmlspecialchars($_SESSION['username']); ?></a></li>
+                    <li><a href="view_available_food.php">Available Food</a></li>
                     <li><a href="logout.php">Logout</a></li>
                 </ul>
             </nav>
