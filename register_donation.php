@@ -8,6 +8,9 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
+// Initialize success flag
+$success = false;
+
 // Fetch food items from DB
 $foodStmt = $pdo->query("SELECT food_item FROM food_item");
 $foodItems = $foodStmt->fetchAll(PDO::FETCH_ASSOC);
@@ -15,6 +18,30 @@ $foodItems = $foodStmt->fetchAll(PDO::FETCH_ASSOC);
 // Fetch users from DB (to select donor)
 $userStmt = $pdo->query("SELECT user_id, username FROM users");
 $users = $userStmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Handle form submission
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $donor = $_POST['donor'];
+    $food_item = $_POST['food_item'];
+    $quantity = $_POST['quantity'];
+
+    try {
+        $drop_off_point = $_SESSION['user_id'];
+
+        $stmt = $pdo->prepare("INSERT INTO donation (donor, food_item, quantity, drop_off_point) 
+                               VALUES (:donor, :food_item, :quantity, :drop_off_point)");
+        $stmt->execute([
+            'donor' => $donor,
+            'food_item' => $food_item,
+            'quantity' => $quantity,
+            'drop_off_point' => $drop_off_point
+        ]);
+
+        $success = true;
+    } catch (PDOException $e) {
+        echo "<p>Error: " . $e->getMessage() . "</p>";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -29,6 +56,13 @@ $users = $userStmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="card">
             <h2 class="card-title">Add a Donation</h2>
             <form method="POST" class="form">
+
+                <?php if ($success): ?>
+                    <div class="success-message">
+                        ✅ Donation submitted successfully!
+                        <a href="homepage.php" class="return-link">Go back</a>
+                    </div>
+                <?php endif; ?>
 
                 <div class="form-group">
                     <label for="donor">Select Donor:</label>
@@ -63,30 +97,3 @@ $users = $userStmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 </body>
 </html>
-
-
-<?php
-// Handle form submission
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $donor = $_POST['donor'];
-    $food_item = $_POST['food_item'];
-    $quantity = $_POST['quantity'];
-
-    try {
-        $drop_off_point = $_SESSION['user_id'];
-
-        $stmt = $pdo->prepare("INSERT INTO donation (donor, food_item, quantity, drop_off_point) 
-                            VALUES (:donor, :food_item, :quantity, :drop_off_point)");
-        $stmt->execute([
-            'donor' => $donor,
-            'food_item' => $food_item,
-            'quantity' => $quantity,
-            'drop_off_point' => $drop_off_point
-        ]);
-
-        echo "<p>Donation added successfully! <a href='homepage.php'>Go back</a></p>";
-    } catch (PDOException $e) {
-        echo "<p>Error: " . $e->getMessage() . "</p>";
-    }
-}
-?>
