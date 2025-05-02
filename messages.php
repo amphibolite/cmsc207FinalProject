@@ -31,6 +31,24 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="assets/css/messages.css">
 </head>
 <body>
+    <header class="dashboard-header">
+            <div class="container">
+                <div class="logo">
+                    <img src="assets/images/logo.png" alt="FoodShare Logo">
+                    <span>FoodShare</span>
+                </div>
+                <nav class="nav-links">
+                    <ul>
+                        <li><a href="homepage.php">Dashboard</a></li>
+                        <li><a href="register_donation.php">Donate</a></li>
+                        <li><a href="register_claim.php">Claim</a></li>
+                        <li><a href="messages.php">Messages</a></li>
+                        <li><a href="view_available_food.php">Available Food</a></li>
+                        <li><a href="logout.php">Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
     <h2>Messages</h2>
 
     <div class="message-list">
@@ -47,5 +65,8 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 
     <p><a class="new-message-btn" href="start_conversation.php">+ Message Someone New</a></p>
+
+    <p><a class="home-btn" href="homepage.php">← Back to Homepage</a></p>
+
 </body>
 </html>

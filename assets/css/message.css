@@ -98,3 +98,186 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+/* Header */
+.dashboard-header {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.dashboard-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.logo span {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #28a745;
+}
+
+.nav-links ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #28a745;
+}
+
+/* Welcome Section */
+.welcome {
+    background-color: #f1f1f1;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.welcome h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.welcome p {
+    font-size: 1.2rem;
+}
+
+/* Dashboard Actions */
+.dashboard-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.action-card {
+    background-color: #fff;
+    padding: 2rem;
+    flex: 1;
+    min-width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-radius: 8px;
+}
+
+.action-card h2 {
+    margin-bottom: 1rem;
+    color: #28a745;
+}
+
+.action-card p {
+    margin-bottom: 1.5rem;
+}
+
+.action-card .btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.action-card .btn-primary {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.action-card .btn-primary:hover {
+    background-color: #218838;
+}
+
+.action-card .btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.action-card .btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.action-card .btn-info {
+    background-color: #17a2b8;
+    color: #fff;
+}
+
+.action-card .btn-info:hover {
+    background-color: #138496;
+}
+
+/* Recent Activity Section */
+.recent-activity {
+    background-color: #fff;
+    padding: 2rem 0;
+    margin-top: 2rem;
+}
+
+.recent-activity h2 {
+    font-size: 2rem;
+    color: #28a745;
+    margin-bottom: 1rem;
+}
+
+.activity-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.activity-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.activity-list strong {
+    color: #28a745;
+}
+
+/* Footer Section */
+.dashboard-footer {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .dashboard-header .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .dashboard-header .nav-links ul {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
