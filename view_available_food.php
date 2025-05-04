@@ -5,19 +5,26 @@ session_start();
 // Fetch available food with donor location info
 $sql = "
     SELECT 
-        d.food_item,
-        u.username AS donor_name,
-        CONCAT(u.street_address, ', ', u.barangay, ', ', u.city, ', ', u.province) AS donor_location,
-        SUM(d.quantity) AS total_donated,
-        COALESCE(SUM(c.quantity), 0) AS total_claimed,
-        (SUM(d.quantity) - COALESCE(SUM(c.quantity), 0)) AS available_quantity
-    FROM donation d
-    JOIN users u ON d.donor = u.user_id
-    LEFT JOIN claim c 
-        ON d.food_item = c.food_item AND d.donor = c.claim_point
-    GROUP BY d.food_item, u.username, donor_location
-    HAVING (SUM(d.quantity) - COALESCE(SUM(c.quantity), 0)) > 0
-    ORDER BY d.food_item;
+    d.food_item,
+    u.username AS donor_name,
+    CONCAT(u.street_address, ', ', u.barangay, ', ', u.city, ', ', u.province) AS donor_location,
+    SUM(d.quantity) AS total_donated,
+    COALESCE(SUM(c.quantity), 0) AS total_claimed,
+    COALESCE(e.total_expired, 0) AS total_expired,
+    (SUM(d.quantity) - COALESCE(SUM(c.quantity), 0) - COALESCE(e.total_expired, 0)) AS available_quantity
+FROM donation d
+JOIN users u ON d.donor = u.user_id
+LEFT JOIN claim c 
+    ON d.food_item = c.food_item AND d.donor = c.claim_point
+LEFT JOIN (
+    SELECT food_item, SUM(quantity) AS total_expired
+    FROM expired
+    GROUP BY food_item
+) e ON d.food_item = e.food_item
+GROUP BY d.food_item, u.username, donor_location, e.total_expired
+HAVING (SUM(d.quantity) - COALESCE(SUM(c.quantity), 0) - COALESCE(e.total_expired, 0)) > 0
+ORDER BY d.food_item;
+
 ";
 
 $stmt = $pdo->prepare($sql);
