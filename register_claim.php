@@ -91,6 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <button type="submit" class="btn">Submit Claim</button>
             </form>
+            <a href="homepage.php" class="btn back-btn">← Back to Homepage</a>
         </div>
     </div>
 </body>

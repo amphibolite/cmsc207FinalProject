@@ -1,28 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Register Food Item</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/claim.css">
 </head>
 <body>
-    <h2>Register a New Food Item</h2>
-    <form method="POST" action="register_food_item.php">
-        <label for="food_item">Food Item:</label><br>
-        <input type="text" name="food_item" required><br><br>
+    <div class="container">
+        <div class="card">
+            <h2 class="card-title">Register a New Food Item</h2>
 
-        <label for="food_group">Food Group:</label><br>
-        <input type="text" name="food_group"><br><br>
+            <form method="POST" action="register_food_item.php" class="form">
+                <div class="form-group">
+                    <label for="food_item">Food Item:</label>
+                    <input type="text" name="food_item" id="food_item" required>
+                </div>
 
-        <label for="perishable">Perishable?</label><br>
-        <select name="perishable" required>
-            <option value="true">Yes</option>
-            <option value="false">No</option>
-        </select><br><br>
+                <div class="form-group">
+                    <label for="food_group">Food Group:</label>
+                    <input type="text" name="food_group" id="food_group">
+                </div>
 
-        <label for="unit">Unit (e.g. kg, pcs):</label><br>
-        <input type="text" name="unit"><br><br>
+                <div class="form-group">
+                    <label for="perishable">Perishable?</label>
+                    <select name="perishable" id="perishable" required>
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                    </select>
+                </div>
 
-        <input type="submit" value="Submit">
-    </form>
+                <div class="form-group">
+                    <label for="unit">Unit (e.g. kg, pcs):</label>
+                    <input type="text" name="unit" id="unit">
+                </div>
+
+                <button type="submit" class="btn">Submit</button>
+            </form>
+
+            <!-- Back to homepage button -->
+            <a href="homepage.php" class="btn back-btn">← Back to Homepage</a>
+        </div>
+    </div>
 </body>
 </html>

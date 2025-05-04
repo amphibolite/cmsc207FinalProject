@@ -14,29 +14,47 @@ $foodItems = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Register Expired Food</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/claim.css"> <!-- Match register_claim -->
 </head>
 <body>
-    <h2>Register Expired Food Item</h2>
-    <form method="POST">
+    <div class="container">
+        <div class="card">
+            <h2 class="card-title">Register Expired Food Item</h2>
+            <form method="POST" class="form">
 
-        <label for="food_item">Select Food Item:</label><br>
-        <select name="food_item" required>
-            <?php foreach ($foodItems as $item): ?>
-                <option value="<?= htmlspecialchars($item['food_item']) ?>">
-                    <?= htmlspecialchars($item['food_item']) ?>
-                </option>
-            <?php endforeach; ?>
-        </select><br><br>
+                <?php if (!empty($success)): ?>
+                    <div class="success-message">
+                        ✅ Expired Item registered successfully!
+                        <a href="homepage.php" class="return-link">Go back</a>
+                    </div>
+                <?php endif; ?>
 
-        <label for="quantity">Quantity:</label><br>
-        <input type="number" name="quantity" step="0.01" required><br><br>
+                <div class="form-group">
+                    <label for="food_item">Select Food Item:</label>
+                    <select name="food_item" id="food_item" required>
+                        <?php foreach ($foodItems as $item): ?>
+                            <option value="<?= htmlspecialchars($item['food_item']) ?>">
+                                <?= htmlspecialchars($item['food_item']) ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
 
-        <input type="submit" value="Submit">
-    </form>
+                <div class="form-group">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" name="quantity" id="quantity" step="0.01" min="0.01" required>
+                </div>
+
+                <button type="submit" class="btn">Register Expired Food</button>
+            </form>
+            <a href="homepage.php" class="btn back-btn">← Back to Homepage</a>
+
+        </div>
+    </div>
 </body>
 </html>
 

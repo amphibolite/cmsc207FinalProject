@@ -64,16 +64,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                 <?php endif; ?>
 
+                <?php
+
+                if (!isset($_SESSION['user_id'])) {
+                    header("Location: login.php");
+                    exit();
+                }
+
+                $user_id = $_SESSION['user_id'];
+
+                $stmt = $pdo->prepare("SELECT username FROM users WHERE user_id = :uid");
+                $stmt->execute(['uid' => $user_id]);
+                $current_user = $stmt->fetch(PDO::FETCH_ASSOC);
+                ?>
+
+                <input type="hidden" name="donor" value="<?= htmlspecialchars($user_id) ?>">
+
+       
                 <div class="form-group">
-                    <label for="donor">Select Donor:</label>
-                    <select name="donor" id="donor" required>
-                        <?php foreach ($users as $user): ?>
-                            <option value="<?= $user['user_id'] ?>">
-                                <?= htmlspecialchars($user['username']) ?>
-                            </option>
-                        <?php endforeach; ?>
+                    <label for="donor_display">Donor:</label>
+                    <select id="donor_display" disabled>
+                        <option><?= htmlspecialchars($current_user['username']) ?></option>
                     </select>
                 </div>
+
 
                 <div class="form-group">
                     <label for="food_item">Food Item:</label>
@@ -93,6 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <button type="submit" class="btn">Submit Donation</button>
             </form>
+            <a href="homepage.php" class="btn back-btn">← Back to Homepage</a>
         </div>
     </div>
 </body>

@@ -258,3 +258,20 @@ select {
 .btn:hover {
     background-color: #45a049;
 }
+
+.back-btn {
+    display: inline-block;
+    margin-top: 15px;
+    background-color: #e0f2e9;
+    color: #2e7d32;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.back-btn:hover {
+    background-color: #c5e7d3;
+}
