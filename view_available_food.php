@@ -50,24 +50,29 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
     </style>
     <script>
-        function filterTable() {
-            const input = document.getElementById("locationSearch");
-            const filter = input.value.toLowerCase();
-            const rows = document.querySelectorAll("#foodTable tbody tr");
+    function filterTable() {
+        const input = document.getElementById("locationSearch");
+        const filter = input.value.toLowerCase();
+        const rows = document.querySelectorAll("#foodTable tbody tr");
 
-            rows.forEach(row => {
-                const location = row.cells[3].textContent.toLowerCase();
-                row.style.display = location.includes(filter) ? "" : "none";
-            });
-        }
-    </script>
+        rows.forEach(row => {
+            const foodItem = row.cells[0].textContent.toLowerCase();
+            const location = row.cells[3].textContent.toLowerCase();
+
+            // Show row if filter matches food item OR location
+            const matches = foodItem.includes(filter) || location.includes(filter);
+            row.style.display = matches ? "" : "none";
+        });
+    }
+</script>
+
 </head>
 <body>
     <div class="container">
         <h2>Available Donated Food</h2>
 
         <div class="search-box">
-            <label for="locationSearch">Search by Location:</label><br>
+            <label for="locationSearch">Search by Food or Location:</label><br>
             <input type="text" id="locationSearch" onkeyup="filterTable()" placeholder="Enter barangay, city, or province...">
         </div>
 
